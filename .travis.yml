@@ -1,0 +1,8 @@
+language: java
+
+deploy:
+    provider: heroku
+    api_key:
+        secure: $API_KEY
+    app:
+        master: serendeepia
