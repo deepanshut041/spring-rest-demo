@@ -41,9 +41,10 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 
-	// swagger3
-	compile "io.springfox:springfox-swagger2:3.0.0-SNAPSHOT"
-	compile "io.springfox:springfox-swagger-ui:3.0.0-SNAPSHOT"
+	// Swagger
+	implementation ("io.springfox:springfox-swagger2:2.9.2") 
+	implementation "io.springfox:springfox-swagger-ui:2.9.2"
+	implementation "org.springframework.plugin:spring-plugin-core:1.2.0.RELEASE"
 
 	// Mapstruct
 	implementation "org.mapstruct:mapstruct:1.3.0.Final"

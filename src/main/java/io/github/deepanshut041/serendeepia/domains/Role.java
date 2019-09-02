@@ -18,7 +18,11 @@ public class Role {
     @Column(unique = true, nullable = false)
     private String name;
 
-    @ManyToMany(mappedBy = "roles")
-    private Collection<User> users;
+//    @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)
+//    private Collection<User> users;
+
+    public Role (String name){
+        this.name = name;
+    }
 
 }

@@ -10,10 +10,12 @@ import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.Optional;
 
 @Configuration
+@EnableSwagger2
 public class SpringFoxConfig {
 
     @Bean
@@ -26,12 +28,12 @@ public class SpringFoxConfig {
                 .build();
     }
     private ApiInfo apiInfo() {
-        return new ApiInfoBuilder().title("Sarte REST API")
-                .description("Shop Management REST API")
-                .contact(new Contact("Squrlabs", "www.Squrlabs.com", "squrlabs@gmail.com"))
+        return new ApiInfoBuilder().title("Serendeepia REST API")
+                .description("Serendeepia Auth REST API")
+                .contact(new Contact("Deepanshu Tyagi", "deepanshut041.github.io", "deepanshut041@gmail.com"))
                 .license("Apache 2.0")
                 .licenseUrl("http://www.apache.org/licenses/LICENSE-2.0.html")
-                .version("0.0.1")
+                .version("1.0")
                 .build();
     }
 

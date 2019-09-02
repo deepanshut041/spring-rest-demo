@@ -55,13 +55,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers(
-                        "/api/auth/**",
-                        "/api/v2/api-docs/**",
-                        "/swagger-ui.html/**",
-                        "/swagger-resources/**",
-                        "/favicon.ico", "/**/*.png", "/**/*.gif", "/**/*.svg", "/**/*.jpg", "/**/*.html", "/**/*.css", "/**/*.js"
-
-                )
+                        "/api/auth/**", "/**",
+                        "/v2/api-docs", "/configuration/**", "/swagger*/**",
+                        "/favicon.ico",
+                        "/**/*.png", "/**/*.gif", "/**/*.svg", "/**/*.jpg", "/**/*.html", "/**/*.css", "/**/*.js")
                 .permitAll().anyRequest().authenticated();
 
         http.addFilterBefore(tokenAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
