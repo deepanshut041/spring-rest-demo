@@ -7,7 +7,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface UserService extends UserDetailsService {
     UserDetails loadUserById(Long id);
@@ -17,4 +16,6 @@ public interface UserService extends UserDetailsService {
     boolean existsByEmail(String email);
 
     void save(RegisterDto registerDto, List<Role> roles);
+
+    List<User> findAll();
 }

@@ -7,13 +7,17 @@ import org.springframework.stereotype.Component;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
-import springfox.documentation.service.ApiInfo;
-import springfox.documentation.service.Contact;
+import springfox.documentation.service.*;
 import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spi.service.contexts.SecurityContext;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+
+import static java.util.Collections.singletonList;
 
 @Configuration
 @EnableSwagger2WebMvc
@@ -27,7 +31,30 @@ public class SpringFoxConfig {
                 .apiInfo(apiInfo())
                 .select().apis(RequestHandlerSelectors.any())
                 .paths(PathSelectors.ant("/api/**"))
+                .build()
+                .securitySchemes(singletonList(apiKey()))
+                .securityContexts(singletonList(securityContext()));
+
+    }
+
+    private ApiKey apiKey() {
+        return new ApiKey("mykey", "api_key", "header");
+    }
+
+    private SecurityContext securityContext() {
+        return SecurityContext.builder()
+                .securityReferences(defaultAuth())
+                .forPaths(PathSelectors.regex("/anyPath.*"))
                 .build();
+    }
+
+    private List<SecurityReference> defaultAuth() {
+        AuthorizationScope authorizationScope
+                = new AuthorizationScope("global", "accessEverything");
+        AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
+        authorizationScopes[0] = authorizationScope;
+        return singletonList(
+                new SecurityReference("mykey", authorizationScopes));
     }
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder().title("Serendeepia REST API")
@@ -38,6 +65,4 @@ public class SpringFoxConfig {
                 .version("1.0")
                 .build();
     }
-
-
 }
