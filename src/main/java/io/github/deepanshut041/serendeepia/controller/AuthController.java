@@ -46,7 +46,7 @@ public class AuthController {
     private RoleService roleService;
 
     @PostMapping("/login")
-    public ResponseEntity<?> authenticateUser(
+    public ResponseEntity<AuthResponse> authenticateUser(
             @ApiParam(value = "LoginDto contains email and password", required = true)
             @Valid @RequestBody LoginDto loginDto) {
 
@@ -64,7 +64,7 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<?> registerUser(
+    public ResponseEntity<ApiResponse> registerUser(
             @ApiParam(value = "RegisterDto contains information regarding user", required = true)
             @Valid @RequestBody RegisterDto registerDto) {
 

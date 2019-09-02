@@ -12,7 +12,7 @@ import java.util.Optional;
 public interface UserService extends UserDetailsService {
     UserDetails loadUserById(Long id);
 
-    Optional<User> findById(long id);
+    User findById(long id);
 
     boolean existsByEmail(String email);
 
