@@ -9,7 +9,7 @@ import java.util.Collection;
 @Entity
 @Data
 @NoArgsConstructor
-@Table(name = "role")
+@Table(name = "roles")
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,9 +17,6 @@ public class Role {
 
     @Column(unique = true, nullable = false)
     private String name;
-
-//    @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)
-//    private Collection<User> users;
 
     public Role (String name){
         this.name = name;
