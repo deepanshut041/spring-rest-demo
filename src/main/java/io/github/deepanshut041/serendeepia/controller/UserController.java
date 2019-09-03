@@ -2,9 +2,7 @@ package io.github.deepanshut041.serendeepia.controller;
 
 import io.github.deepanshut041.serendeepia.domains.User;
 import io.github.deepanshut041.serendeepia.service.UserService;
-import io.github.deepanshut041.serendeepia.util.CurrentUser;
 import io.github.deepanshut041.serendeepia.util.UserPrincipal;
-import io.github.deepanshut041.serendeepia.util.exception.ResourceNotFoundException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.Authorization;
@@ -17,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/users")
@@ -36,7 +33,8 @@ public class UserController {
         return ResponseEntity.ok(user);
     }
 
-    @GetMapping({"", "/"})
+    @GetMapping()
+    @PreAuthorize("hasRole('ADMIN')")
     @ApiOperation(value = "Get your profile", authorizations = { @Authorization("Bearer")})
     public ResponseEntity<List<User>> getAllUser() {
         List<User> users = userService.findAll();
