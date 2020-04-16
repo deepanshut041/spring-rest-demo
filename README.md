@@ -1,7 +1,6 @@
-## Serendeepia Server
+# Spring Rest Server
 
-## Rest Api Link
-http://serendeepia.herokuapp.com/swagger-ui.html
+The project is demostration of how to implement authenticaton with RestController using modular structure with SOLID priciples
 
 ## Highlights
 
@@ -18,12 +17,12 @@ http://serendeepia.herokuapp.com/swagger-ui.html
 * The Get Current User will return data about current user. Requires user to be authenticated.
 
 ## API
-[Rest Api Doc](http://serendeepia.herokuapp.com/swagger-ui.html) - Documentation Link
+[Rest Api Doc](/swagger-ui.html) - Documentation Link
 
-1. To Register new user - http://serendeepia.herokuapp.com/api/auth/register
-2. To SignIn user - http://serendeepia.herokuapp.com/api/auth/login
-3. To Get All User - http://serendeepia.herokuapp.com/api/users (Requires Admin Privileges)
-4. To get user profile - http://serendeepia.herokuapp.com/api/users/me (Requires Authorization)
+1. To Register new user - /api/auth/register
+2. To SignIn user - /api/auth/login
+3. To Get All User - /api/users (Requires Admin Privileges)
+4. To get user profile - /api/users/me (Requires Authorization)
 
 ## Library Used
 1. Spring Web: https://spring.io/
